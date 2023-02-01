@@ -19,11 +19,21 @@ public class Tester {
         randomNumbers.add(12);
         randomNumbers.addAll(divisorsOf52); //append at the end of list
         System.out.println("Elements inside randomNumbers:"+randomNumbers+" - number of elements: "+randomNumbers.size()+"\n----------------------------------------");
-        HashSet hashSetList= new HashSet<>(randomNumbers); // removing duplicates with cast
-        List<Integer> sortedList = new ArrayList<>(hashSetList);
-        System.out.println("Elements inside after removing duplicates:"+sortedList+" - size of the list: "+sortedList.size()+"\n----------------------------------------");
-        Collections.sort(sortedList); //sorting
-        System.out.println("Elements sorted:"+sortedList+"\n----------------------------------------");
+
+        ListIterator <Integer> iterator= randomNumbers.listIterator();
+        while (iterator.hasNext()){
+            int index= iterator.nextIndex();
+            int value= iterator.next();
+            for (int i=0; i<index; i++ ){
+                if (value == randomNumbers.get(i)){
+                    iterator.remove();
+                }
+            }
+        }
+        //HashSet hashSetList= new HashSet<>(randomNumbers); // removing duplicates with cast
+       System.out.println("Elements inside after removing duplicates:"+randomNumbers+" - size of the list: "+randomNumbers.size()+"\n----------------------------------------");
+       Collections.sort(randomNumbers); //sorting
+       System.out.println("Elements sorted:"+randomNumbers+"\n----------------------------------------");
     }
 }
 /**
